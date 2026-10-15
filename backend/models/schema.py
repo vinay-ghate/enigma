@@ -4,7 +4,7 @@ Strictly adheres to .agents/CODE_BACKEND.md and Pydantic v2.
 """
 
 from __future__ import annotations
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Literal
 from pydantic import BaseModel, Field
 
@@ -12,6 +12,10 @@ from pydantic import BaseModel, Field
 NodeType = Literal["pr", "deploy", "ticket", "message", "doc", "service", "incident"]
 EdgeType = Literal["modifies", "depends_on", "caused_by_candidate", "supersedes", "discussed_in"]
 ConfidenceLevel = Literal["high", "medium", "low", "uncertain"]
+
+
+def current_utc_time() -> datetime:
+    return datetime.now(timezone.utc)
 
 
 class Node(BaseModel):
@@ -77,7 +81,7 @@ class AgentMessage(BaseModel):
     role: str
     model: Literal["gemini-2.5-flash", "gemini-2.5-pro", "deterministic-engine"]
     content: str
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=current_utc_time)
     citations: list[dict] = Field(default_factory=list)
     metadata: dict = Field(default_factory=dict)
 
@@ -86,7 +90,7 @@ class InvestigationRun(BaseModel):
     id: str
     incident_id: str
     mode: Literal["live", "replay"]
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=current_utc_time)
     status: Literal["running", "completed", "failed"]
     agent_messages: list[AgentMessage] = Field(default_factory=list)
     hypotheses: list[Hypothesis] = Field(default_factory=list)

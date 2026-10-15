@@ -75,7 +75,9 @@ class CausalGraphEngine:
                     subgraph_nodes.append(node)
 
         # Sort chronological
-        subgraph_nodes.sort(key=lambda n: n.timestamp or datetime.min)
+        from datetime import timezone
+        min_utc = datetime.min.replace(tzinfo=timezone.utc)
+        subgraph_nodes.sort(key=lambda n: n.timestamp or min_utc)
         return subgraph_nodes
 
     def find_superseded_docs(self, service_id: str | None = None) -> list[dict]:
@@ -187,7 +189,9 @@ class CausalGraphEngine:
                 if node.timestamp and start_time <= node.timestamp <= end_time:
                     candidate_nodes.append(node)
 
-        candidate_nodes.sort(key=lambda n: n.timestamp or datetime.min, reverse=True)
+        from datetime import timezone
+        min_utc = datetime.min.replace(tzinfo=timezone.utc)
+        candidate_nodes.sort(key=lambda n: n.timestamp or min_utc, reverse=True)
         return candidate_nodes
 
     def find_coincident_deploys(self, incident_id: str, window_minutes: int = 30) -> list[Node]:
