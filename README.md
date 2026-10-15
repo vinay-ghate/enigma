@@ -48,9 +48,19 @@ The Remediation Agent is **physically blocked** from drafting changes unless pur
 
 ## Quickstart & Local Run
 
-### 1. Prerequisites
+📖 **Full Step-by-Step & Judge Guide:** See [docs/RUNNING_PROTOTYPE.md](docs/RUNNING_PROTOTYPE.md)  
+🏛️ **Architecture Specifications:** See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+
+### 1. Prerequisites & Installation
 - Python 3.11+ (tested on Python 3.14)
-- Node.js 18+ and npm
+- Node.js 18+ and npm (only needed if building frontend)
+
+```powershell
+# Create venv and install dependencies from requirements.txt:
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
 
 ### 2. Run with One Command (Unified Fullstack)
 ```powershell
