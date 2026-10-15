@@ -66,3 +66,12 @@ async def test_remediation_approval_workflow():
         logs = audit_res.json()
         assert len(logs) >= 1
         assert logs[-1]["incident_id"] == "INC-101"
+
+
+@pytest.mark.asyncio
+async def test_spa_serving():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        res = await client.get("/")
+        assert res.status_code == 200
+        assert "Enigma" in res.text
