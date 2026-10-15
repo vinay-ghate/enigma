@@ -18,7 +18,7 @@ Enigma solves this with a 4-stage pipeline combining deterministic graph constra
 ```mermaid
 flowchart LR
     Alert["Production Alert"] --> EvAgent["Evidence Agent (Flash)"]
-    EvAgent --> LoopAgent["Hypothesis ↔ Challenger Loop (Pro)"]
+    EvAgent --> LoopAgent["Hypothesis / Challenger Loop (Pro)"]
     LoopAgent --> Verifier["Deterministic Python Gate"]
     Verifier -->|Passed Hard Checks| RemAgent["Remediation Agent (Pro)"]
     RemAgent --> Approval["Human Approval Gate"]

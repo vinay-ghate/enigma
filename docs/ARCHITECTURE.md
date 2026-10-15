@@ -5,14 +5,14 @@ Enigma investigates microservice production incidents by combining Google ADK ag
 
 ```mermaid
 flowchart TD
-    subgraph Data Layer
+    subgraph Data_Layer ["Data Layer"]
         Topology["Deterministic Topology (depends_on)"]
-        SeedPRs["Ingested PRs & Commits"]
-        Docs["Runbooks & Docs (validity_intervals)"]
+        SeedPRs["Ingested PRs and Commits"]
+        Docs["Runbooks and Docs (validity_intervals)"]
         Deploys["Deployment History"]
     end
 
-    subgraph Causal Memory
+    subgraph Causal_Memory ["Causal Memory"]
         NX["NetworkX DiGraph Engine"]
         Topology --> NX
         SeedPRs --> NX
@@ -20,18 +20,18 @@ flowchart TD
         Deploys --> NX
     end
 
-    subgraph Agent Loop (Google ADK)
+    subgraph Agent_Loop ["Agent Loop (Google ADK)"]
         EvAgent["Evidence Agent (Gemini 2.5 Flash)"]
         HypoAgent["Hypothesis Agent (Gemini 2.5 Pro)"]
         ChallAgent["Challenger Agent (Gemini 2.5 Pro)"]
         
-        EvAgent -->|Timeline & Stale Docs| HypoAgent
+        EvAgent -->|Timeline and Stale Docs| HypoAgent
         HypoAgent <-->|Adversarial Falsification| ChallAgent
     end
 
-    subgraph Deterministic Gate
+    subgraph Deterministic_Gate ["Deterministic Gate"]
         PythonCheck["Python Hard Checks (verifier.py)"]
-        Rule1["cause.timestamp <= incident.timestamp"]
+        Rule1["cause timestamp <= incident timestamp"]
         Rule2["nx.has_path(changed_svc, affected_svc)"]
         Rule3["no higher-ranked unchallenged hypothesis"]
         PythonCheck --- Rule1
@@ -39,7 +39,7 @@ flowchart TD
         PythonCheck --- Rule3
     end
 
-    subgraph Action & Safety
+    subgraph Action_Safety ["Action & Safety"]
         RemAgent["Remediation Agent (Gemini 2.5 Pro)"]
         ApprovalGate["Human Approval Gate (approval_token)"]
         SandboxPR["Draft Revert PR (enigma-sandbox)"]
