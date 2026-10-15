@@ -1,0 +1,64 @@
+{
+  "services": [
+    {
+      "id": "svc-frontend",
+      "name": "frontend",
+      "description": "Exposes an HTTP server to serve the website. Calls recommendation, cart, checkout, catalog, and ad services.",
+      "tier": 1,
+      "language": "go"
+    },
+    {
+      "id": "svc-checkout",
+      "name": "checkoutservice",
+      "description": "Orchestrates order placement. Coordinates cartservice, paymentservice, and productcatalogservice.",
+      "tier": 1,
+      "language": "go"
+    },
+    {
+      "id": "svc-cart",
+      "name": "cartservice",
+      "description": "Stores user cart items in Redis memory store.",
+      "tier": 2,
+      "language": "csharp"
+    },
+    {
+      "id": "svc-recommendation",
+      "name": "recommendationservice",
+      "description": "Provides product recommendations based on items in user's cart.",
+      "tier": 2,
+      "language": "python"
+    },
+    {
+      "id": "svc-payment",
+      "name": "paymentservice",
+      "description": "Charges credit card info via third-party payment gateway.",
+      "tier": 2,
+      "language": "nodejs"
+    },
+    {
+      "id": "svc-productcatalog",
+      "name": "productcatalogservice",
+      "description": "Provides list of products and queries product database.",
+      "tier": 3,
+      "language": "go"
+    },
+    {
+      "id": "svc-ad",
+      "name": "adservice",
+      "description": "Provides text ads displayed on pages based on context.",
+      "tier": 3,
+      "language": "java"
+    }
+  ],
+  "dependencies": [
+    { "source": "svc-frontend", "target": "svc-cart", "type": "depends_on", "evidence": "gRPC Client Call frontend -> cart" },
+    { "source": "svc-frontend", "target": "svc-recommendation", "type": "depends_on", "evidence": "gRPC Client Call frontend -> recommendation" },
+    { "source": "svc-frontend", "target": "svc-checkout", "type": "depends_on", "evidence": "gRPC Client Call frontend -> checkout" },
+    { "source": "svc-frontend", "target": "svc-productcatalog", "type": "depends_on", "evidence": "gRPC Client Call frontend -> productcatalog" },
+    { "source": "svc-frontend", "target": "svc-ad", "type": "depends_on", "evidence": "gRPC Client Call frontend -> adservice" },
+    { "source": "svc-checkout", "target": "svc-cart", "type": "depends_on", "evidence": "gRPC Call checkout -> cart (EmptyCart)" },
+    { "source": "svc-checkout", "target": "svc-payment", "type": "depends_on", "evidence": "gRPC Call checkout -> payment (ChargeCard)" },
+    { "source": "svc-checkout", "target": "svc-productcatalog", "type": "depends_on", "evidence": "gRPC Call checkout -> productcatalog (GetProduct)" },
+    { "source": "svc-recommendation", "target": "svc-productcatalog", "type": "depends_on", "evidence": "gRPC Call recommendation -> productcatalog (ListProducts)" }
+  ]
+}

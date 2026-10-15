@@ -1,0 +1,32 @@
+[
+  {
+    "id": "doc-082",
+    "title": "DOC-082: Recommendation Service Caching Guidelines",
+    "service_id": "svc-recommendation",
+    "last_updated": "2025-08-10T12:00:00Z",
+    "superseded_by": "pr-412",
+    "source_link": "https://wiki.enigma-sandbox.io/docs/DOC-082-recommendation-caching",
+    "content": "Recommendation items are compute-intensive. CACHE_TTL_SECONDS MUST NEVER be lower than 300 seconds to protect the product catalog database from stampede queries during traffic surges.",
+    "is_stale": true
+  },
+  {
+    "id": "doc-cart-04",
+    "title": "RUNBOOK-CART-04: Resolving Cart Memory Leaks & OOMKilled",
+    "service_id": "svc-cart",
+    "last_updated": "2025-05-14T09:00:00Z",
+    "superseded_by": "pr-590",
+    "source_link": "https://wiki.enigma-sandbox.io/runbooks/RUNBOOK-CART-04",
+    "content": "If cartservice pods enter CrashLoopBackOff due to OOM, increase deployment container memory limit from 256Mi to 512Mi. Note: Do not touch redis connection settings.",
+    "is_stale": true
+  },
+  {
+    "id": "doc-checkout-sla",
+    "title": "SOP-110: Checkout Service Latency SLAs and Timeouts",
+    "service_id": "svc-checkout",
+    "last_updated": "2026-09-01T10:00:00Z",
+    "superseded_by": null,
+    "source_link": "https://wiki.enigma-sandbox.io/sop/SOP-110-checkout-sla",
+    "content": "All downstream calls from checkoutservice must enforce a deadline under 800ms. Any external dependency call exceeding 800ms will cause upstream context cancellation in the frontend gateway.",
+    "is_stale": false
+  }
+]

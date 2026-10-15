@@ -1,0 +1,72 @@
+[
+  {
+    "id": "dep-ad-142",
+    "service_id": "svc-ad",
+    "image_tag": "adservice:v1.4.2",
+    "timestamp": "2026-10-15T14:29:00Z",
+    "deployed_by": "argocd-sync",
+    "environment": "production",
+    "status": "healthy",
+    "description": "Routine security bump for ad service Jackson XML dependency. Finished 3m before INC-101."
+  },
+  {
+    "id": "dep-cart-210",
+    "service_id": "svc-cart",
+    "image_tag": "cartservice:v2.1.0",
+    "timestamp": "2026-10-15T16:08:00Z",
+    "deployed_by": "argocd-sync",
+    "environment": "production",
+    "status": "healthy",
+    "description": "Routine cart telemetry bump 7m before INC-102."
+  },
+  {
+    "id": "dep-rec-412",
+    "service_id": "svc-recommendation",
+    "image_tag": "recommendationservice:v1.12.0",
+    "timestamp": "2026-10-15T14:20:00Z",
+    "deployed_by": "github-actions",
+    "environment": "production",
+    "status": "degraded",
+    "description": "Deployment of PR #412 cache TTL change."
+  },
+  {
+    "id": "dep-pay-521",
+    "service_id": "svc-payment",
+    "image_tag": "paymentservice:v3.4.0",
+    "timestamp": "2026-10-15T16:04:00Z",
+    "deployed_by": "github-actions",
+    "environment": "production",
+    "status": "degraded",
+    "description": "Deployment of PR #521 fraud check validation."
+  },
+  {
+    "id": "dep-cart-633",
+    "service_id": "svc-cart",
+    "image_tag": "cartservice:v2.2.0",
+    "timestamp": "2026-10-15T17:51:00Z",
+    "deployed_by": "github-actions",
+    "environment": "production",
+    "status": "crashloop",
+    "description": "Deployment of PR #633 connection pool reduction."
+  },
+  {
+    "id": "dep-pay-109",
+    "service_id": "svc-payment",
+    "image_tag": "paymentservice:v3.4.1",
+    "timestamp": "2026-10-15T20:35:00Z",
+    "deployed_by": "argocd-sync",
+    "environment": "production",
+    "status": "healthy",
+    "description": "Payment service doc bump deployed 10m before INC-104."
+  },
+  {
+    "id": "dep-cat-815",
+    "service_id": "svc-productcatalog",
+    "image_tag": "productcatalogservice:v1.9.0",
+    "timestamp": "2026-10-15T20:30:00Z",
+    "deployed_by": "github-actions",
+    "environment": "production",
+    "status": "degraded",
+    "description": "Deployment of PR #815 unindexed category query."
+  }
+]

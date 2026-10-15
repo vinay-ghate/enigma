@@ -1,0 +1,34 @@
+[
+  {
+    "id": "msg-slack-412",
+    "channel": "#deployments",
+    "user": "alex.dev",
+    "timestamp": "2026-10-15T14:19:00Z",
+    "source_link": "https://enigma.slack.com/archives/C04DEPLOY/p1729001940",
+    "text": "Deployed PR #412 (recommendation TTL cut to 5s). Freshness verified on staging."
+  },
+  {
+    "id": "msg-slack-alert-101",
+    "channel": "#incidents-prod",
+    "user": "datadog-bot",
+    "timestamp": "2026-10-15T14:32:00Z",
+    "source_link": "https://enigma.slack.com/archives/C04PROD/p1729002720",
+    "text": "🔥 ALERT [P1] recommendationservice p99 latency > 4000ms. Error budget burn rate 14x."
+  },
+  {
+    "id": "msg-slack-ad-deploy",
+    "channel": "#deployments",
+    "user": "argocd",
+    "timestamp": "2026-10-15T14:29:00Z",
+    "source_link": "https://enigma.slack.com/archives/C04DEPLOY/p1729002540",
+    "text": "Synced adservice:v1.4.2 to production cluster us-central1."
+  },
+  {
+    "id": "msg-slack-ext-outage",
+    "channel": "#incidents-prod",
+    "user": "oncall-lead",
+    "timestamp": "2026-10-15T20:47:00Z",
+    "source_link": "https://enigma.slack.com/archives/C04PROD/p1729025220",
+    "text": "⚠️ Visa / Stripe status page confirms major North American fiber cut impacting third-party payment gateway authorizations. Internal services are healthy."
+  }
+]

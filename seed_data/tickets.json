@@ -1,0 +1,50 @@
+[
+  {
+    "id": "JIRA-4412",
+    "key": "ENG-4412",
+    "title": "Freshen recommendation catalog cache for flash sales",
+    "service_id": "svc-recommendation",
+    "creator": "product.owner@enigma.io",
+    "created_at": "2026-10-14T09:00:00Z",
+    "status": "Closed",
+    "source_link": "https://jira.enigma-sandbox.io/browse/ENG-4412",
+    "linked_pr": "pr-412",
+    "description": "Users complain sold out items remain visible in recommendations for up to 5 minutes. Lower TTL to 5s."
+  },
+  {
+    "id": "JIRA-4409",
+    "key": "ENG-4409",
+    "title": "Optimize catalog item query memory and cache expiration",
+    "service_id": "svc-productcatalog",
+    "creator": "database.architect@enigma.io",
+    "created_at": "2026-10-11T14:00:00Z",
+    "status": "Closed",
+    "source_link": "https://jira.enigma-sandbox.io/browse/ENG-4409",
+    "linked_pr": "pr-409",
+    "description": "Bump catalog cache TTL to reduce Postgres DB read pressure."
+  },
+  {
+    "id": "JIRA-5521",
+    "key": "ENG-5521",
+    "title": "Implement synchronous fraud check before card authorization",
+    "service_id": "svc-payment",
+    "creator": "compliance.lead@enigma.io",
+    "created_at": "2026-10-13T11:00:00Z",
+    "status": "Closed",
+    "source_link": "https://jira.enigma-sandbox.io/browse/ENG-5521",
+    "linked_pr": "pr-521",
+    "description": "Comply with updated PCI-DSS fraud check requirement. Add 1500ms synchronous API check."
+  },
+  {
+    "id": "JIRA-6633",
+    "key": "ENG-6633",
+    "title": "Reduce CartService Redis connection pool footprint",
+    "service_id": "svc-cart",
+    "creator": "cost.efficiency@enigma.io",
+    "created_at": "2026-10-15T10:00:00Z",
+    "status": "Closed",
+    "source_link": "https://jira.enigma-sandbox.io/browse/ENG-6633",
+    "linked_pr": "pr-633",
+    "description": "Redis cluster max connections exceeded during autoscaling. Cut pod max pool size from 100 to 5."
+  }
+]

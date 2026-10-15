@@ -1,0 +1,22 @@
+# Virtual Environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Env & Secrets
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
